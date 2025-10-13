@@ -1,0 +1,9 @@
+2025-07-28 155603 |Login with credentials |PASS
+2025-07-28 155604 |Add product to cart |PASS
+2025-07-28 155604 |Click cart icon |PASS
+2025-07-28 155606 |Clean and verify cart |PASS
+2025-07-28 155606 |Click checkout |PASS
+2025-07-28 155607 |Fill in user info |PASS
+2025-07-28 155607 |Click continue |PASS
+2025-07-28 155607 |Verify order summary |PASS
+2025-07-28 155607 |Click finish |PASS

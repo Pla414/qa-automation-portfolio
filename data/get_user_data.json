@@ -1,0 +1,36 @@
+[
+  {
+    "tc": "GET User with valid ID",
+    "user_id": 2,
+    "expected_status": 200,
+    "expected_fields": ["id", "email", "first_name", "last_name", "avatar"]
+  },
+    {
+    "tc": "GET User without ID",
+    "user_id": null,
+    "expected_status": 200,
+    "is_collection": true,
+    "expected_fields": ["id", "email", "first_name", "last_name", "avatar"]
+  },
+  {
+    "tc": "GET User with character",
+    "user_id": "abc",
+    "expected_status": 404
+  },
+  {
+    "tc": "GET User with special character",
+    "user_id": "",
+    "expected_status": 404
+  },
+  {
+    "tc": "GET User ID non-exist",
+    "user_id": 9999,
+    "expected_status": 404
+  },
+  {
+    "tc": "GET User Response Time SLA",
+    "user_id": 2,
+    "expected_status": 200,
+    "expected_max_response_time_ms": 2000
+  }
+]

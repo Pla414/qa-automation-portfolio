@@ -1,0 +1,3 @@
+2025-06-15 200918 |Start login test
+2025-06-15 200920 |Login with credentials
+2025-06-15 200921 |Add product to cart

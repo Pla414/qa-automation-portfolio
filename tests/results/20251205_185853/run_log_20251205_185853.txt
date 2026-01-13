@@ -1,0 +1,9 @@
+2025-12-05 185857 |Login with credentials |PASS
+2025-12-05 185858 |Add product to cart |PASS
+2025-12-05 185858 |Click cart icon |PASS
+2025-12-05 185859 |Clean and verify cart |PASS
+2025-12-05 185859 |Click checkout |PASS
+2025-12-05 185900 |Fill in user info |PASS
+2025-12-05 185900 |Click continue |PASS
+2025-12-05 185900 |Verify order summary |PASS
+2025-12-05 185900 |Click finish |PASS

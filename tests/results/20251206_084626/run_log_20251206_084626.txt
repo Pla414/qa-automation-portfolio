@@ -1,0 +1,9 @@
+2025-12-06 084632 |Login with credentials |PASS
+2025-12-06 084632 |Add product to cart |PASS
+2025-12-06 084632 |Click cart icon |PASS
+2025-12-06 084634 |Clean and verify cart |PASS
+2025-12-06 084634 |Click checkout |PASS
+2025-12-06 084634 |Fill in user info |PASS
+2025-12-06 084634 |Click continue |PASS
+2025-12-06 084635 |Verify order summary |PASS
+2025-12-06 084635 |Click finish |PASS

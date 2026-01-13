@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-12-09T06:36:06.620732" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Put Api" source="E:\saucedemo_test1\tests\test_put_api.robot">
+<test id="s1-t1" name="TC1 Update User Valid ENG" line="11">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:07.871420" level="INFO">${name} = panida test</msg>
+<var>${name}</var>
+<arg>panida test</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.870785" elapsed="0.000757"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:07.873282" level="INFO">${job} = qa engineer</msg>
+<var>${job}</var>
+<arg>qa engineer</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.872554" elapsed="0.000886"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:07.878126" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.877145" elapsed="0.001234"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:07.878639" elapsed="0.000213"/>
+</return>
+<msg time="2025-12-09T06:36:07.879603" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:07.876402" elapsed="0.003340"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:07.882191" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.881393" elapsed="0.000978"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.882972" elapsed="0.002711"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:07.880620" elapsed="0.006065"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:07.888131" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:07.887350" elapsed="0.002613"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:07.891781" level="INFO">${data} = {'name': 'panida test', 'job': 'qa engineer'}</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.890706" elapsed="0.001208"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:08.716568" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '45'} 
+ body=b'{"name": "panida test", "job": "qa engineer"}' 
+ </msg>
+<msg time="2025-12-09T06:36:08.716939" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"51-4N0eQzxft9SQThhcvMgtKVxEOdE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=joOLhZFHJTjP46I1xg2UUlHYhEYYxOxt164DoAsOEYY%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236968"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=joOLhZFHJTjP46I1xg2UUlHYhEYYxOxt164DoAsOEYY%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236968"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '99', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': '3d87dbeb-f7ff-3e59-b1d7-64a09067b016', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab0154b1daa10de-BKK'} 
+ body={"name":"panida test","job":"qa engineer","updatedAt":"2025-12-08T23:36:08.627Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:08.717253" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:07.892784" elapsed="0.824527"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.717868" elapsed="0.001159"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.719452" elapsed="0.000693"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.720473" elapsed="0.001271"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:08.721919" elapsed="0.000138"/>
+</return>
+<msg time="2025-12-09T06:36:08.722501" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${USER_ID}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:07.874736" elapsed="0.847849"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.724912" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.724019" elapsed="0.001046"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.726431" level="INFO">${body} = {'name': 'panida test', 'job': 'qa engineer', 'updatedAt': '2025-12-08T23:36:08.627Z'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.725334" elapsed="0.001182"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.727358" elapsed="0.000425"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.728027" elapsed="0.001318"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.729806" elapsed="0.001731"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.731896" elapsed="0.000681"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:08.723280" elapsed="0.009583"/>
+</kw>
+<doc>Update user with valid English name and job</doc>
+<status status="PASS" start="2025-12-09T06:36:07.867270" elapsed="0.866398"/>
+</test>
+<test id="s1-t2" name="TC2 Update User Valid TH" line="18">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.738620" level="INFO">${name} = พนิดา บานเย็น</msg>
+<var>${name}</var>
+<arg>พนิดา บานเย็น</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.736296" elapsed="0.002446"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.739600" level="INFO">${job} = เจ้าหน้าที่ทดสอบระบบ</msg>
+<var>${job}</var>
+<arg>เจ้าหน้าที่ทดสอบระบบ</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.739313" elapsed="0.000329"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.743223" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.742450" elapsed="0.000844"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:08.743438" elapsed="0.000082"/>
+</return>
+<msg time="2025-12-09T06:36:08.743794" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:08.740803" elapsed="0.003036"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.745216" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.744804" elapsed="0.000470"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.745458" elapsed="0.000705"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:08.744142" elapsed="0.002139"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:08.746637" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:08.746437" elapsed="0.000529"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:08.748397" level="INFO">${data} = {'name': 'พนิดา บานเย็น', 'job': 'เจ้าหน้าที่ทดสอบระบบ'}</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.747427" elapsed="0.001091"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:09.104314" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '216'} 
+ body=b'{"name": "\\u0e1e\\u0e19\\u0e34\\u0e14\\u0e32 \\u0e1a\\u0e32\\u0e19\\u0e40\\u0e22\\u0e47\\u0e19", "job": "\\u0e40\\u0e08\\u0e49\\u0e32\\u0e2b\\u0e19\\u0e49\\u0e32\\u0e17\\u0e35\\u0e48\\u0e17\\u0e14\\u0e2a\\u0e2d\\u0e1a\\u0e23\\u0e30\\u0e1a\\u0e1a"}' 
+ </msg>
+<msg time="2025-12-09T06:36:09.104518" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:09 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"9c-N9FlNOvT3wQ2pWy/vY07jd+KFLI"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Yx6EvX3pr3RScctZIUM2l7i7d9rqA7DqWV9JV4lSDrg%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236969"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Yx6EvX3pr3RScctZIUM2l7i7d9rqA7DqWV9JV4lSDrg%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236969"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '98', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': '99f62aeb-e5b0-7055-0ad7-647e61a1c70a', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab0154f7cf510d2-BKK'} 
+ body={"name":"พนิดา บานเย็น","job":"เจ้าหน้าที่ทดสอบระบบ","updatedAt":"2025-12-08T23:36:09.014Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:09.104825" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:08.749016" elapsed="0.355853"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.105183" elapsed="0.000660"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.106487" elapsed="0.000852"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.107736" elapsed="0.001550"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:09.109477" elapsed="0.000108"/>
+</return>
+<msg time="2025-12-09T06:36:09.109982" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${USER_ID}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:08.740159" elapsed="0.369892"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.112083" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.111348" elapsed="0.000848"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.113090" level="INFO">${body} = {'name': 'พนิดา บานเย็น', 'job': 'เจ้าหน้าที่ทดสอบระบบ', 'updatedAt': '2025-12-08T23:36:09.014Z'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.112391" elapsed="0.000750"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.113314" elapsed="0.000221"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.113696" elapsed="0.000732"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.114596" elapsed="0.000695"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.115452" elapsed="0.000500"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:09.110685" elapsed="0.005433"/>
+</kw>
+<doc>Update user with valid Thai name and job</doc>
+<status status="PASS" start="2025-12-09T06:36:08.735083" elapsed="0.381503"/>
+</test>
+<test id="s1-t3" name="TC3 Update User Special Characters" line="25">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.121721" level="INFO">${name} = @#$%^^&amp;*</msg>
+<var>${name}</var>
+<arg>@#$%^^&amp;*</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.121221" elapsed="0.000597"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.128111" level="INFO">${job} = @@!!??</msg>
+<var>${job}</var>
+<arg>@@!!??</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.127562" elapsed="0.000688"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.133033" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.132156" elapsed="0.000980"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:09.133352" elapsed="0.000134"/>
+</return>
+<msg time="2025-12-09T06:36:09.133941" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:09.131279" elapsed="0.002755"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.136074" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.135358" elapsed="0.000829"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.136577" elapsed="0.001424"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:09.134516" elapsed="0.003723"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:09.139051" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:09.138588" elapsed="0.000918"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.140713" level="INFO">${data} = {'name': '@#$%^^&amp;*', 'job': '@@!!??'}</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.139959" elapsed="0.000846"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:09.533043" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '37'} 
+ body=b'{"name": "@#$%^^&amp;*", "job": "@@!!??"}' 
+ </msg>
+<msg time="2025-12-09T06:36:09.533315" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:09 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"49-LkK9hXqUwSU1IrffkQccLJ8e7KE"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Yx6EvX3pr3RScctZIUM2l7i7d9rqA7DqWV9JV4lSDrg%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236969"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=Yx6EvX3pr3RScctZIUM2l7i7d9rqA7DqWV9JV4lSDrg%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236969"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '97', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': 'f7087f7f-cc17-1191-8bad-31627773434b', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab015522ef745b3-BKK'} 
+ body={"name":"@#$%^^&amp;*","job":"@@!!??","updatedAt":"2025-12-08T23:36:09.445Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:09.533749" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.141184" elapsed="0.392618"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.534131" elapsed="0.000768"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.535362" elapsed="0.000780"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.536636" elapsed="0.001686"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:09.538545" elapsed="0.000131"/>
+</return>
+<msg time="2025-12-09T06:36:09.539073" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${USER_ID}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:09.129945" elapsed="0.409190"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.541273" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.540536" elapsed="0.000851"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.542516" level="INFO">${body} = {'name': '@#$%^^&amp;*', 'job': '@@!!??', 'updatedAt': '2025-12-08T23:36:09.445Z'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.541606" elapsed="0.000978"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.542849" elapsed="0.000262"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.543295" elapsed="0.000796"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.544256" elapsed="0.000738"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.545173" elapsed="0.000536"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:09.539848" elapsed="0.006039"/>
+</kw>
+<doc>Update user with special characters (ระบบยังคงตอบ 200)</doc>
+<status status="PASS" start="2025-12-09T06:36:09.118043" elapsed="0.428355"/>
+</test>
+<test id="s1-t4" name="TC4 Update User Empty Value" line="32">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.551484" level="INFO">${name} = </msg>
+<var>${name}</var>
+<arg>${EMPTY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.550018" elapsed="0.001588"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.554020" level="INFO">${job} = </msg>
+<var>${job}</var>
+<arg>${EMPTY}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.552461" elapsed="0.001689"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.557688" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.557088" elapsed="0.000677"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:09.557914" elapsed="0.000082"/>
+</return>
+<msg time="2025-12-09T06:36:09.558265" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:09.556514" elapsed="0.001804"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.559469" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.559041" elapsed="0.000490"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.559789" elapsed="0.001100"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:09.558580" elapsed="0.002547"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:09.562307" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:09.561540" elapsed="0.001531"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:09.565129" level="INFO">${data} = {'name': '', 'job': ''}</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.563792" elapsed="0.001560"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:10.224110" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '23'} 
+ body=b'{"name": "", "job": ""}' 
+ </msg>
+<msg time="2025-12-09T06:36:10.224328" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"3b-0ILfNOAqYNSuCz09SbF0jSMAiUQ"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=OvDc%2FrxegqDdFlcdMVVQFsMwfvmohZ3rMiaSMGHfRX0%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236970"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=OvDc%2FrxegqDdFlcdMVVQFsMwfvmohZ3rMiaSMGHfRX0%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236970"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '96', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': 'd030f84f-36d9-d1a8-168e-452b901fe169', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab01554ac6bf4cf-BKK'} 
+ body={"name":"","job":"","updatedAt":"2025-12-08T23:36:10.140Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:10.224902" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:09.565887" elapsed="0.659066"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.225301" elapsed="0.000642"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.226486" elapsed="0.000836"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.227633" elapsed="0.001156"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:10.228960" elapsed="0.000102"/>
+</return>
+<msg time="2025-12-09T06:36:10.229425" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${USER_ID}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:09.555256" elapsed="0.674240"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.232488" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.231153" elapsed="0.001539"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.234549" level="INFO">${body} = {'name': '', 'job': '', 'updatedAt': '2025-12-08T23:36:10.140Z'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.233134" elapsed="0.001511"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.235005" elapsed="0.000432"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.235814" elapsed="0.001241"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.237382" elapsed="0.000878"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.238455" elapsed="0.000485"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:10.230197" elapsed="0.008901"/>
+</kw>
+<doc>Update user with empty name and job (ระบบยังคงตอบ 200)</doc>
+<status status="PASS" start="2025-12-09T06:36:09.547866" elapsed="0.691669"/>
+</test>
+<test id="s1-t5" name="TC5 Update User Long Character 250" line="39">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-12-09T06:36:10.243800" level="INFO">${name} = uTBZk4B0MCQA7VzCN252AvZzzPoW9NTbmyhcByn5OGP2yus3wAJNJAT9UNx8jMM66uKsoaQm2y39vUaLV3oFYMe9ebWsOsN64UJXzlSC5RbRIBOL8r8CpdgDoOTyZ7bowR1l8HX5bkZTF1H7vfLsaFVl8LOVTN27L1mpO6h5CIm4ycy3hLeq76JTAvnOCqyWkzjZWjN7...</msg>
+<var>${name}</var>
+<arg>250</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.242598" elapsed="0.001310"/>
+</kw>
+<kw name="Generate Random String" owner="String">
+<msg time="2025-12-09T06:36:10.245937" level="INFO">${job} = KTtfJEOPgGSdT5rHw5lzQhEOjekWbEvppxhjA1erEoXSiglXNjDXCDo27wplXqd6W6plzM67TbVsaubj3ZBVv4eylVND7Tr3YyTQNB6XRRQDU7vicwqWrg6EKRWur3ZGBJLJY2zK52j2XBwnJhHEg9s1ljVNXtWYyxgEIUDGyGSRBUoNdPfCpDNkCHB7ntEDO11LbNwh...</msg>
+<var>${job}</var>
+<arg>250</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.244665" elapsed="0.001558"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.251714" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.251099" elapsed="0.000705"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:10.251965" elapsed="0.000086"/>
+</return>
+<msg time="2025-12-09T06:36:10.252314" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:10.250473" elapsed="0.001895"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.255596" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.254846" elapsed="0.000900"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.256322" elapsed="0.003880"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:10.252685" elapsed="0.008210"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:10.262460" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:10.261501" elapsed="0.001425"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.268575" level="INFO">${data} = {'name': 'uTBZk4B0MCQA7VzCN252AvZzzPoW9NTbmyhcByn5OGP2yus3wAJNJAT9UNx8jMM66uKsoaQm2y39vUaLV3oFYMe9ebWsOsN64UJXzlSC5RbRIBOL8r8CpdgDoOTyZ7bowR1l8HX5bkZTF1H7vfLsaFVl8LOVTN27L1mpO6h5CIm4ycy3hLeq76JTAvnOCq...</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.263340" elapsed="0.005350"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:10.638848" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '523'} 
+ body=b'{"name": "uTBZk4B0MCQA7VzCN252AvZzzPoW9NTbmyhcByn5OGP2yus3wAJNJAT9UNx8jMM66uKsoaQm2y39vUaLV3oFYMe9ebWsOsN64UJXzlSC5RbRIBOL8r8CpdgDoOTyZ7bowR1l8HX5bkZTF1H7vfLsaFVl8LOVTN27L1mpO6h5CIm4ycy3hLeq76JTAvnOCqyWkzjZWjN7XiKW1oCdmlxiA2XMBzD0K2nbkW9JrNJ43g4LaaF3CV251pesAt", "job": "KTtfJEOPgGSdT5rHw5lzQhEOjekWbEvppxhjA1erEoXSiglXNjDXCDo27wplXqd6W6plzM67TbVsaubj3ZBVv4eylVND7Tr3YyTQNB6XRRQDU7vicwqWrg6EKRWur3ZGBJLJY2zK52j2XBwnJhHEg9s1ljVNXtWYyxgEIUDGyGSRBUoNdPfCpDNkCHB7ntEDO11LbNwhQKJuloAC6YLlsdm2mXClRsa4Q85jD9c78eTnMtmwYLPDVBlTvk"}' 
+ </msg>
+<msg time="2025-12-09T06:36:10.639300" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"22f-Ojo5lkgWCzKQlo4JOXVGwqDMOQQ"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=OvDc%2FrxegqDdFlcdMVVQFsMwfvmohZ3rMiaSMGHfRX0%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236970"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=OvDc%2FrxegqDdFlcdMVVQFsMwfvmohZ3rMiaSMGHfRX0%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236970"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '95', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': '3599304c-5d67-3a81-b5d0-528a8ebe6578', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab015593ca59bae-BKK'} 
+ body={"name":"uTBZk4B0MCQA7VzCN252AvZzzPoW9NTbmyhcByn5OGP2yus3wAJNJAT9UNx8jMM66uKsoaQm2y39vUaLV3oFYMe9ebWsOsN64UJXzlSC5RbRIBOL8r8CpdgDoOTyZ7bowR1l8HX5bkZTF1H7vfLsaFVl8LOVTN27L1mpO6h5CIm4ycy3hLeq76JTAvnOCqyWkzjZWjN7XiKW1oCdmlxiA2XMBzD0K2nbkW9JrNJ43g4LaaF3CV251pesAt","job":"KTtfJEOPgGSdT5rHw5lzQhEOjekWbEvppxhjA1erEoXSiglXNjDXCDo27wplXqd6W6plzM67TbVsaubj3ZBVv4eylVND7Tr3YyTQNB6XRRQDU7vicwqWrg6EKRWur3ZGBJLJY2zK52j2XBwnJhHEg9s1ljVNXtWYyxgEIUDGyGSRBUoNdPfCpDNkCHB7ntEDO11LbNwhQKJuloAC6YLlsdm2mXClRsa4Q85jD9c78eTnMtmwYLPDVBlTvk","updatedAt":"2025-12-08T23:36:10.551Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:10.639683" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.269211" elapsed="0.370533"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.640143" elapsed="0.000737"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.641308" elapsed="0.000904"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.642671" elapsed="0.001752"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:10.644638" elapsed="0.000126"/>
+</return>
+<msg time="2025-12-09T06:36:10.645235" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${USER_ID}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:10.249101" elapsed="0.396211"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.648027" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.646940" elapsed="0.001257"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.650058" level="INFO">${body} = {'name': 'uTBZk4B0MCQA7VzCN252AvZzzPoW9NTbmyhcByn5OGP2yus3wAJNJAT9UNx8jMM66uKsoaQm2y39vUaLV3oFYMe9ebWsOsN64UJXzlSC5RbRIBOL8r8CpdgDoOTyZ7bowR1l8HX5bkZTF1H7vfLsaFVl8LOVTN27L1mpO6h5CIm4ycy3hLeq76JTAvnOCq...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.648606" elapsed="0.001566"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.650649" elapsed="0.000542"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.651589" elapsed="0.001627"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.653694" elapsed="0.001597"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.655891" elapsed="0.003875"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:10.646080" elapsed="0.013972"/>
+</kw>
+<doc>Update user with 250 characters (ระบบยังคงตอบ 200)</doc>
+<status status="PASS" start="2025-12-09T06:36:10.240573" elapsed="0.420395"/>
+</test>
+<test id="s1-t6" name="TC6 Update Non Existing User" line="46">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.673616" level="INFO">${name} = kaori</msg>
+<var>${name}</var>
+<arg>kaori</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.673205" elapsed="0.000476"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.674443" level="INFO">${job} = friend india</msg>
+<var>${job}</var>
+<arg>friend india</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.674198" elapsed="0.000287"/>
+</kw>
+<kw name="Send Put User Request" owner="keywords_api">
+<kw name="Create API Headers" owner="keywords_api">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.676542" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>${API_KEY_NAME}=${API_KEY}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.675968" elapsed="0.000663"/>
+</kw>
+<return>
+<value>${headers}</value>
+<status status="PASS" start="2025-12-09T06:36:10.676787" elapsed="0.000105"/>
+</return>
+<msg time="2025-12-09T06:36:10.677293" level="INFO">${headers} = {'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<status status="PASS" start="2025-12-09T06:36:10.675607" elapsed="0.001759"/>
+</kw>
+<kw name="Disable Insecure Warning" owner="keywords_api">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.679349" level="INFO">${urllib3} = &lt;module 'urllib3' from 'C:\\Users\\plabi\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\urllib3\\__init__.py'&gt;</msg>
+<var>${urllib3}</var>
+<arg>__import__('urllib3')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.678792" elapsed="0.000626"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${urllib3}</arg>
+<arg>disable_warnings</arg>
+<arg>${urllib3.exceptions.InsecureRequestWarning}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.679661" elapsed="0.001549"/>
+</kw>
+<status status="PASS" start="2025-12-09T06:36:10.677891" elapsed="0.003583"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:10.682335" level="INFO">Creating Session using : alias=api, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-09T06:36:10.681811" elapsed="0.001028"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-09T06:36:10.684202" level="INFO">${data} = {'name': 'kaori', 'job': 'friend india'}</msg>
+<var>${data}</var>
+<arg>name=${name}</arg>
+<arg>job=${job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.683292" elapsed="0.001018"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-12-09T06:36:11.291493" level="INFO">PUT Request : url=https://reqres.in/api/users/9999 
+ path_url=/api/users/9999 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'x-api-key': 'reqres_2787fd94d3df4bb0adc6fd836a0e7a2b', 'Content-Type': 'application/json', 'Content-Length': '40'} 
+ body=b'{"name": "kaori", "job": "friend india"}' 
+ </msg>
+<msg time="2025-12-09T06:36:11.291688" level="INFO">PUT Response : url=https://reqres.in/api/users/9999 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 08 Dec 2025 23:36:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Origin': 'http://localhost:5173', 'Etag': 'W/"4c-Xz2UeZKo4iTl64mgPkJ7wCJ86gU"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=iKP%2FXy7IRZ3CJNC5H3rKVxCiQ1LGqvDJnEeA0%2Fj5MR8%3D\\u0026sid=c4c9725f-1ab0-44d8-820f-430df2718e11\\u0026ts=1765236971"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=iKP%2FXy7IRZ3CJNC5H3rKVxCiQ1LGqvDJnEeA0%2Fj5MR8%3D&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;ts=1765236971"', 'Server': 'cloudflare', 'Vary': 'Origin, accept-encoding', 'Via': '1.1 heroku-router', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '94', 'X-Ratelimit-Reset': '1765237029', 'X-Request-Id': '9eaf90b5-826e-1eca-d183-90194f0a7781', 'X-Xss-Protection': '1; mode=block', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': '9ab0155bad8445b9-BKK'} 
+ body={"name":"kaori","job":"friend india","updatedAt":"2025-12-08T23:36:11.205Z"} 
+ </msg>
+<msg time="2025-12-09T06:36:11.291915" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${user_id}</arg>
+<arg>json=${data}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-09T06:36:10.684757" elapsed="0.607203"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT URL: /users/${user_id}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.292287" elapsed="0.000616"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Payload: ${data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.293191" elapsed="0.000602"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>PUT Response: ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.294130" elapsed="0.001401"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-12-09T06:36:11.295674" elapsed="0.000099"/>
+</return>
+<msg time="2025-12-09T06:36:11.296157" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>9999</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:10.674995" elapsed="0.621233"/>
+</kw>
+<kw name="Validate Put Response" owner="keywords_api">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-09T06:36:11.299486" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.298209" elapsed="0.001446"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-09T06:36:11.301609" level="INFO">${body} = {'name': 'kaori', 'job': 'friend india', 'updatedAt': '2025-12-08T23:36:11.205Z'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.300049" elapsed="0.001683"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${body}</arg>
+<arg>updatedAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.302190" elapsed="0.000733"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['name']}</arg>
+<arg>${expected_name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.303388" elapsed="0.001128"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body['job']}</arg>
+<arg>${expected_job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.304829" elapsed="0.001526"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPUT Response Validated Successfully</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-09T06:36:11.306783" elapsed="0.002144"/>
+</kw>
+<arg>${response}</arg>
+<arg>${name}</arg>
+<arg>${job}</arg>
+<status status="PASS" start="2025-12-09T06:36:11.297054" elapsed="0.012173"/>
+</kw>
+<doc>Update non-existing user (ระบบยังคงตอบ 200)</doc>
+<status status="PASS" start="2025-12-09T06:36:10.670663" elapsed="0.639171"/>
+</test>
+<status status="PASS" start="2025-12-09T06:36:06.625832" elapsed="4.685774"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test Put Api" id="s1" pass="6" fail="0" skip="0">Test Put Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

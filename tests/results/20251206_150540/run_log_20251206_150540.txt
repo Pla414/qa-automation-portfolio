@@ -1,0 +1,9 @@
+2025-12-06 150543 |Login with credentials |PASS
+2025-12-06 150543 |Add product to cart |PASS
+2025-12-06 150543 |Click cart icon |PASS
+2025-12-06 150545 |Clean and verify cart |PASS
+2025-12-06 150545 |Click checkout |PASS
+2025-12-06 150545 |Fill in user info |PASS
+2025-12-06 150545 |Click continue |PASS
+2025-12-06 150546 |Verify order summary |PASS
+2025-12-06 150546 |Click finish |PASS

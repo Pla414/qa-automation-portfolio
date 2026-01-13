@@ -1,0 +1,9 @@
+20251206_170844 |Login with credentials |PASS
+20251206_170847 |Add product to cart |PASS
+20251206_170847 |Click cart icon |PASS
+20251206_170848 |Clean and verify cart |PASS
+20251206_170849 |Click checkout |PASS
+20251206_170850 |Fill in user info |PASS
+20251206_170850 |Click continue |PASS
+20251206_170850 |Verify order summary |PASS
+20251206_170851 |Click finish |PASS

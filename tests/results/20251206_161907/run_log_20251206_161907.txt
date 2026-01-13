@@ -1,0 +1,9 @@
+2025-12-06 161913 |Login with credentials |PASS
+2025-12-06 161913 |Add product to cart |PASS
+2025-12-06 161913 |Click cart icon |PASS
+2025-12-06 161915 |Clean and verify cart |PASS
+2025-12-06 161915 |Click checkout |PASS
+2025-12-06 161915 |Fill in user info |PASS
+2025-12-06 161915 |Click continue |PASS
+2025-12-06 161915 |Verify order summary |PASS
+2025-12-06 161916 |Click finish |PASS

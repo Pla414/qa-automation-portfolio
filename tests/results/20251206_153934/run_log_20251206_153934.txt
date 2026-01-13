@@ -1,0 +1,9 @@
+2025-12-06 153938 |Login with credentials |PASS
+2025-12-06 153939 |Add product to cart |PASS
+2025-12-06 153939 |Click cart icon |PASS
+2025-12-06 153940 |Clean and verify cart |PASS
+2025-12-06 153940 |Click checkout |PASS
+2025-12-06 153941 |Fill in user info |PASS
+2025-12-06 153941 |Click continue |PASS
+2025-12-06 153941 |Verify order summary |PASS
+2025-12-06 153941 |Click finish |PASS

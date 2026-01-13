@@ -1,9 +1,0 @@
-2025-07-28 173752 |Login with credentials |PASS
-2025-07-28 173752 |Add product to cart |PASS
-2025-07-28 173752 |Click cart icon |PASS
-2025-07-28 173753 |Clean and verify cart |PASS
-2025-07-28 173753 |Click checkout |PASS
-2025-07-28 173754 |Fill in user info |PASS
-2025-07-28 173754 |Click continue |PASS
-2025-07-28 173754 |Verify order summary |PASS
-2025-07-28 173754 |Click finish |PASS

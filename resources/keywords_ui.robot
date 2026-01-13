@@ -1,20 +1,21 @@
 *** Settings ***
-Library    SeleniumLibrary
-Library    String     # for Replace String,  Fetch From Right, Strip String
-Library    Collections    # for  Append To List
-Library    DateTime
-Library    OperatingSystem
+Library    SeleniumLibrary        # ใช้ควบคุม UI: เปิดเบราว์เซอร์, คลิก, พิมพ์, รอ element
+Library    String                 # ใช้จัดการข้อความ: Replace String, Fetch From Right, Strip String
+Library    Collections            # ใช้จัดการ list/dict: Create List, Append To List, Get From List
+Library    DateTime               # ใช้ดึงเวลาปัจจุบัน, สร้าง timestamp สำหรับ log หรือชื่อไฟล์
+Library    OperatingSystem        # ใช้จัดการไฟล์/โฟลเดอร์: Create Directory, Remove File, Append To File
+Library    Process
 
 *** Variables ***
 ${URL}    https://www.saucedemo.com/
-${LOG_DIR}        logs
-${LOG_FILE}       ${LOG_DIR}/test_results.txt
+
 
 *** Keywords ***
 Login with credentials
     [Arguments]    ${username}    ${password}    ${browser}
     Run Keyword If    '${browser}' == 'chrome'    Open Chrome Without Popup    ${URL}
-    ...    ELSE    Open Browser    ${URL}    ${browser}
+    ...         ELSE    Open Browser    ${URL}    ${browser}
+    Maximize Browser Window
     Input Text        id=user-name    ${username}
     Input Password    id=password     ${password}
     Click Button      id=login-button
@@ -23,29 +24,27 @@ Open Chrome Without Popup
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${options}    add_argument    --guest    #incognito
     Open Browser    ${url}    chrome    options=${options}
+    Maximize Browser Window
 Add product to cart 
     [Arguments]    @{product_ids}
     FOR    ${product}    IN    @{product_ids}
-        ${id}=    Set Variable    ${product}
-
-        # 🔍 ดึงรายการ element ที่ตรงกับ id
-        ${elements}=    Get WebElements    id=${id}
+        # ดึงรายการ element ที่ตรงกับ id
+        ${elements}=    Get WebElements    id=${product}
         ${count}=       Get Length         ${elements}
 
         IF    ${count} > 0
-            Click Element    id=${id}
+            Click Element    id=${product}
             Log    Added to cart: ${product}    console=yes
         ELSE
-            Log    ⚠️ Product not found: ${product}    console=yes
+            Log    Product not found: ${product}    console=yes
         END
     END
-    
 Clean Cart And Verify Items
     [Arguments]    @{expected_items}
 
-    ${item_names}=    Get WebElements    css=.inventory_item_name
-    ${remove_buttons}=    Get WebElements    css=.cart_button
-    ${count}=    Get Length    ${item_names}
+    ${item_names}=    Get WebElements    css=.inventory_item_name    #ดึงรายการสินค้าทั้งหมดในตะกร้า
+    ${remove_buttons}=    Get WebElements    css=.cart_button    #ดึงปุ่มลบสินค้าทั้งหมดในตะกร้า
+    ${count}=    Get Length    ${item_names}             #นับจำนวนสินค้าที่มีในตะกร้า
 
     FOR    ${index}    IN RANGE    ${count}
     ${name}=    Get Text    ${item_names[${index}]}
@@ -54,19 +53,18 @@ Clean Cart And Verify Items
     ${is_expected}=    Evaluate    """${name}""" in ${expected_items}
     Wait Until Page Contains Element    xpath=//button[text()="Remove"]    timeout=5s
 
-
-    IF    not ${is_expected}
-        Click Element    ${remove_buttons[${index}]}
-        Log    ❌ Removed unexpected item from cart: ${name}    console=yes
+        IF    not ${is_expected}
+            Click Element    ${remove_buttons[${index}]}
+            Log    Removed unexpected item from cart: ${name}    console=yes
         
-    ELSE
-        Log    Kept expected item in cart: ${name}    console=yes
-    END
+        ELSE
+            Log    Kept expected item in cart: ${name}    console=yes
+        END
     END
 
     Sleep    1s
 
-    ${final_items}=    Get WebElements    css=.inventory_item_name
+    ${final_items}=    Get WebElements    css=.inventory_item_name    #ดึงรายการสินค้าหลังลบ
     @{actual_items}=    Create List
 
     FOR    ${item}    IN    @{final_items}
@@ -76,20 +74,7 @@ Clean Cart And Verify Items
     END
 
     Should Be Equal    ${actual_items}    ${expected_items}
-    Log    🟢 Final verified cart: ${actual_items}    console=yes
-
-Verify cart items
-    [Arguments]    @{expected_items}
-    ${cart_items}=    Get WebElements    css=.inventory_item_name
-    @{actual_items}=    Create List
-
-    FOR    ${item}    IN    @{cart_items}
-        ${name}=    Get Text    ${item}
-        Append To List    ${actual_items}    ${name}
-    END    
-    
-    Should Be Equal    ${actual_items}    ${expected_items}
-    Log To Console    Cart items verified: ${actual_items}    
+    Log    Final verified cart: ${actual_items}    console=yes   
 
 Checkout with your information
     [Arguments]    ${Firstname}    ${Lastname}    ${Zipcode}
@@ -129,23 +114,29 @@ Create Log File Path
     ${file}=         Set Variable    ${folder}/run_log_${datetime}.txt
     Set Suite Variable    ${RESULT_FILE}    ${file}
     Log    Log file will be: ${RESULT_FILE}
-
-Log To Text File
-    [Arguments]    ${message}
-    ${timestamp}=    Get Current Date    result_format=%Y-%m-%d %H%M%S
-    ${line}=         Catenate    SEPARATOR= |     ${timestamp}    ${message}
-    Append To File   ${RESULT_FILE}    ${line}\n
-
-Log Test Result
-    [Arguments]    ${test_step}    ${status}
-    ${timestamp}=    Get Current Date    result_format=%Y-%m-%d %H%M%S
-    ${line}=         Catenate    SEPARATOR= |    ${timestamp}    ${test_step}    ${status}
-    Append To File   ${RESULT_FILE}    ${line}\n
     
 Run Step With Logging
     [Arguments]    ${step}    ${keyword}    @{args}
+    # 1. กำหนด Timestamp ก่อนเริ่มรัน Keyword เพื่อใช้ในการ Log และตั้งชื่อไฟล์ Screenshot
+    ${timestamp}=    Get Current Date    result_format=%Y%m%d_%H%M%S  # <-- ปรับ format ให้ไม่มีเครื่องหมายที่ไม่รองรับในชื่อไฟล์ (เช่น :)
+    # 2. รัน Keyword หลักและจับ Error
     ${status}    ${msg}=    Run Keyword And Ignore Error    ${keyword}    @{args}
-    ${timestamp}=    Get Current Date    result_format=%Y-%m-%d %H%M%S
+    # 3. ถ่ายภาพหน้าจอหลังการรัน Keyword (ไม่ว่า Pass หรือ Fail)
+    ${filename}=    Set Variable    ${step}_${timestamp}_${status}.png
+    Run Keyword And Ignore Error    Capture Page Screenshot    ${filename}    # <-- เพิ่มส่วนนี้ (ใช้ Ignore Error เพื่อป้องกันไม่ให้ Keyword นี้ Fail ตาม)
+    # 4. Log ผลลัพธ์ลงในไฟล์ภายนอก
     ${log_line}=    Catenate    SEPARATOR= |    ${timestamp}    ${step}    ${status}
-    Append To File   ${RESULT_FILE}    ${log_line}\n
+    Append To File    ${RESULT_FILE}    ${log_line}\n
+    # 5. สั่ง Fail ถ้า Keyword หลักล้มเหลว
     Run Keyword If    '${status}' == 'FAIL'    Fail    ${msg}
+
+Capture Screenshot With Unique Name
+    [Arguments]    ${step_name}
+    # 1. ดึงวันที่และเวลาปัจจุบันเพื่อใช้เป็นชื่อไฟล์
+    ${timestamp}=    Get Current Date    result_format=%Y%m%d_%H%M%S
+    
+    # 2. กำหนดชื่อไฟล์ให้ไม่ซ้ำ: [ชื่อขั้นตอน]_[วันที่_เวลา].png
+    ${filename}=    Set Variable    ${step_name}_${timestamp}.png
+    
+    # 3. สั่งถ่ายภาพหน้าจอ
+    Capture Page Screenshot    ${filename}

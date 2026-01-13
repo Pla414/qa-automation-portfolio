@@ -1,0 +1,9 @@
+2025-12-06 165242 |Login with credentials |PASS
+2025-12-06 165242 |Add product to cart |PASS
+2025-12-06 165243 |Click cart icon |PASS
+2025-12-06 165244 |Clean and verify cart |PASS
+2025-12-06 165244 |Click checkout |PASS
+2025-12-06 165244 |Fill in user info |PASS
+2025-12-06 165245 |Click continue |PASS
+2025-12-06 165245 |Verify order summary |PASS
+2025-12-06 165245 |Click finish |PASS

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-08-24T15:21:17.263603" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-12-05T20:15:39.073933" rpa="false" schemaversion="5">
 <suite id="s1" name="Robot Interactive Console" source="c:\Users\plabi\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" owner="MainLoop">
-<status status="PASS" start="2025-08-24T15:21:17.347926" elapsed="5.352784"/>
+<status status="PASS" start="2025-12-05T20:15:39.167611" elapsed="3.156856"/>
 </kw>
-<status status="PASS" start="2025-08-24T15:21:17.345001" elapsed="5.356330"/>
+<status status="PASS" start="2025-12-05T20:15:39.166089" elapsed="3.159325"/>
 </test>
-<status status="PASS" start="2025-08-24T15:21:17.267289" elapsed="5.436270"/>
+<status status="PASS" start="2025-12-05T20:15:39.077786" elapsed="3.252002"/>
 </suite>
 <statistics>
 <total>
@@ -20,7 +20,6 @@
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-24T15:21:17.249896" level="WARN">Error in file 'c:\Users\plabi\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot' on line 4: Singular section headers like '*** Test Case ***' are deprecated. Use plural format like '*** Test Cases ***' instead.</msg>
-<msg time="2025-08-24T15:21:19.264965" level="WARN">Error in file 'None' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-12-05T20:15:39.061289" level="WARN">Error in file 'c:\Users\plabi\.vscode\extensions\robocorp.robotframework-lsp-1.13.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot' on line 4: Singular section headers like '*** Test Case ***' are deprecated. Use plural format like '*** Test Cases ***' instead.</msg>
 </errors>
 </robot>

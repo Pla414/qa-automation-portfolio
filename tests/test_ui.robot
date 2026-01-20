@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    /saucedemo_test1/resources/keywords_ui.robot
+Resource    ../resources/keywords_ui.robot
 Library    Process
 Library    SeleniumLibrary        # ใช้ควบคุม Web UI เช่น click, input, wait, open browser
 Library    String                 # ใช้จัดการข้อความ เช่น Replace String, Fetch From Right, Strip String
@@ -18,7 +18,7 @@ Library    ScreenCapLibrary
 Verify User Can Place Order Successfully
 # ----------------Test set up---------------------
     Create Log File Path
-    Start Video Recording    # เริ่มบันทึกวิดีโอ
+    Start Video Recording    # เริ่มบันทึกวิดีโอ Robot Framework – ScreenCapLibrary
 
     Run Step With Logging    Login with credentials    Login with credentials    standard_user    secret_sauce    chrome   #chrome edge 
     Run Step With Logging    Add product to cart    Add product to cart
@@ -42,6 +42,6 @@ Verify User Can Place Order Successfully
 
     Sleep    2s
 
-    Stop Video Recording
+    Stop Video Recording     #Robot Framework – ScreenCapLibrary
 
     Close Browser
